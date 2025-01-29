@@ -7,32 +7,44 @@ const User = require('../models/Users');
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_KEY;
 
+// using POST method as it is more secure comparing to GET
 
 // Register
 
-// using POST method as it is more secure comparing to GET
 router.post('/signup', async (req, res) => {
 
-    const { username, password, first_name, last_name, profile_picture } = req.body; // getting data from request body
+    const { username, password, password_confirm, first_name, last_name, profile_picture } = req.body; // getting data from request body
+
+    if (!username || !password || !password_confirm || !first_name || !last_name) {
+        return res.status(400).json({ error: 'All fields are required' });
+    }
+
+    if (password !== password_confirm) {
+        return res.status(400).json({ error: 'Passwords do not match' });
+    }
+
+
     const hashedPassword = await bcrypt.hash(password, 10); // hashing password
 
     try {
         const user = await User.create({ username, password: hashedPassword, first_name, last_name, profile_picture });
-        res.status(201).json({ message: 'User registered', user });
+        res.status(201).json({ message: 'User already registered', user });
 
     } catch (error) {
-        //res.status(400).json({ error: 'User registration failed - check authRoutes.js'});
-        res.status(400).json({ error: error.message });
+        res.status(333).json({ error: error.message }); 
     }
 });
 
 
 // Login
 
-// using POST method as it is more secure comparing to GET
 router.post('/login', async (req, res) => {
 
     const { username, password } = req.body; // getting data from request body ( axios.post )
+
+    if (!username || !password) {
+        return res.status(400).json({ error: 'All fields are required' });
+    }
 
     try {
         const user = await User.findOne({ where: { username } }); // get the user from the DB
@@ -45,7 +57,7 @@ router.post('/login', async (req, res) => {
         res.json({ token });
 
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(301).json({ error: error.message });
     }
 });
 

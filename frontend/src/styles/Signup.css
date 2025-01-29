@@ -1,4 +1,4 @@
-/* Login.css */
+/* Signup.css */
 
 * {
     margin: 0;
@@ -23,7 +23,7 @@ html, body {
     height: 100vh;
 }
   
-.login-box {
+.signup-box {
     width: 320px;
     padding: 24px;
     border-radius: 8px;
@@ -38,12 +38,12 @@ html, body {
     margin-bottom: 16px;
 }
   
-.login-form {
+.signup-form {
     display: flex;
     flex-direction: column;
 }
   
-.input-field-login{
+.input-field-signup{
     width: 100%;
     padding: 12px;
     margin-bottom: 12px;
@@ -55,23 +55,11 @@ html, body {
     font-size: 16px;
 }
   
-.input-field-login{
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 12px;
-    border-radius: 6px;
-    background-color: #151c2c;
-    color: white;
-    border: none;
-    outline: none;
-    font-size: 16px;
-}
-
-.input-field-login:focus {
+.input-field-signup:focus {
     border: 2px solid #3b82f6;
 }
   
-.login-button {
+.signup-button {
     width: 100%;
     padding: 12px;
     border-radius: 6px;
@@ -83,7 +71,7 @@ html, body {
     transition: background 0.3s;
 }
   
-.login-button:hover {
+.signup-button:hover {
     background-color: #2563eb;
 }
   

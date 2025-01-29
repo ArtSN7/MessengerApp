@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import "../styles/login.css" 
+import "../styles/Login.css" 
+import error_check from '../data/error_check';
 
 const Login = () => {
 
     // states
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
+    const [error, setError] = useState('');
+    const timeoutRef = useRef(null);
     // navigation to redirect to another page
     const navigate = useNavigate();
 
@@ -21,8 +23,29 @@ const Login = () => {
 
             localStorage.setItem('token', response.data.token);
             navigate('/main');
+
         } catch (error) {
-            setError( error.response.data.error );
+
+            const statusCode = error.response.status;
+            const errorMessage = error.response.data.message; // Adjust based on your API response
+
+            // Call the error check function
+            const isErrorMessage = error_check(statusCode, errorMessage);
+
+            if (isErrorMessage) {
+                navigate('/error');
+            }
+            else{
+              setError( error.response.data.error );
+
+              const element = document.getElementById("error_text");
+              element.style.display = 'block';
+
+              setTimeout(() => {
+                element.style.display = 'none';
+                setError('');
+              }, 1500);
+            }
         }
     };
 
@@ -36,6 +59,7 @@ const Login = () => {
           <button type="submit" className="login-button" onClick={handleSubmit}>Log in</button>
         </form>
         <p className="signup-text" onClick={() => navigate('/signup')}>Sign up</p>
+        {error && <div id='error_text' className="error_text">{error}</div>}
       </div>
     </div>
     );
