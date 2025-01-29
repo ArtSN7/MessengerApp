@@ -71,7 +71,7 @@ const StyledWrapper = styled.div`
     gap: 0.5rem;
   }
 
-  .form input[type="email"],
+  .form input[type="text"],
   .form input[type="password"] {
     border-radius: 0.5rem;
     padding: 1rem 0.75rem;
@@ -84,7 +84,7 @@ const StyledWrapper = styled.div`
     outline: 2px solid var(--bg-dark);
   }
 
-  .form input[type="email"]:focus,
+  .form input[type="text"]:focus,
   .form input[type="password"]:focus {
     outline: 2px solid var(--clr);
   }
