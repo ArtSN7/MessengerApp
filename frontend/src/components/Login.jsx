@@ -7,7 +7,6 @@ const Login = () => {
     // states
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
 
     // navigation to redirect to another page
     const navigate = useNavigate();
@@ -47,7 +46,7 @@ const Login = () => {
                 <button type="submit">Login</button>
             </form>
             <p onClick={() => setIsLogin(!isLogin)}>    
-                Need an account? Register here {href='/signup'}.
+                Need an account? Register here.
             </p>
         </div>
     );

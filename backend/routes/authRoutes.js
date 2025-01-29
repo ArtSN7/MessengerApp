@@ -21,7 +21,8 @@ router.post('/signup', async (req, res) => {
         res.status(201).json({ message: 'User registered', user });
 
     } catch (error) {
-        res.status(400).json({ error: 'User registration failed - check authRoutes.js'});
+        //res.status(400).json({ error: 'User registration failed - check authRoutes.js'});
+        res.status(400).json({ error: error.message });
     }
 });
 
@@ -41,7 +42,8 @@ router.post('/login', async (req, res) => {
         const token = jwt.sign({ userId: user.id }, JWT_SECRET);
         res.json({ token });
     } catch (error) {
-        res.status(400).json({ error: 'Login failed - check authRoutes.js'});
+        res.status(400).json({ error: error.message });
+        //res.status(400).json({ error: 'Login failed - check authRoutes.js'});
     }
 });
 
