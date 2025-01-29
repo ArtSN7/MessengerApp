@@ -35,15 +35,17 @@ router.post('/login', async (req, res) => {
     const { username, password } = req.body; // getting data from request body ( axios.post )
 
     try {
-        const user = await User.findOne({ where: { username } });
-        if (!user || !(await bcrypt.compare(password, user.password))) {
-            return res.status(401).json({ error: 'Invalid credentials' });
+        const user = await User.findOne({ where: { username } }); // get the user from the DB
+
+        if (!user || !(await bcrypt.compare(password, user.password))) { // check the password
+            return res.status(401).json({ error: 'Check your password' }); // if passwords don't match, error is returned
         }
+        // otherwise, the user is logged in
         const token = jwt.sign({ userId: user.id }, JWT_SECRET);
         res.json({ token });
+
     } catch (error) {
         res.status(400).json({ error: error.message });
-        //res.status(400).json({ error: 'Login failed - check authRoutes.js'});
     }
 });
 
