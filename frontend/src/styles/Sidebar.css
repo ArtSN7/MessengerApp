@@ -1,0 +1,9 @@
+.sidebar {
+  text-align: left;
+  margin: 0;
+  background: #1e1e2e;
+  color: white;
+  padding: 20px;
+  width: 300px;
+  height: 100vh;
+}

@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import Sidebar from './Sidebar';
+import ChatWindow from './ChatWindow';
+import "../styles/Main.css";
 
 const Main = () => {
-    return (
-        <div>
-            <h1>Main</h1>
-            <p>The page you are looking for is MAIN.</p>
+    return (   
+        <div className="main-container">
+            <Sidebar className="sidebar" />
+            <ChatWindow className="chat-window" />
         </div>
     );
 };
