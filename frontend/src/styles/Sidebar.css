@@ -1,9 +1,11 @@
 .sidebar {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: #0b1320;
   text-align: left;
-  margin: 0;
-  background: #1e1e2e;
+  background: #0b1320;
   color: white;
-  padding: 20px;
-  width: 300px;
-  height: 100vh;
+  padding: 40px;
+  width: fit-content;
+  height: 100%;
 }

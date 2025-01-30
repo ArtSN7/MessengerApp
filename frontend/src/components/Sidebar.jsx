@@ -1,6 +1,8 @@
 // Sidebar.js
 import React from "react";
 import "../styles/Sidebar.css";
+import ProfileHeader from "./ProfileHeader";
+
 
 
 // { conversations, onSelectConversation }
@@ -8,8 +10,7 @@ import "../styles/Sidebar.css";
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <h2>Hello<br/>Billy S.</h2>
-
+    <ProfileHeader />
     </div>
   );
 };
