@@ -10,7 +10,6 @@ const ProfileHeader = () => {
         <div className="profile-picture"></div>
 
         <div className="text-section">
-          <p className="greeting">Hello</p>
           <p className="name">Billy S.</p>
         </div>
       </div>

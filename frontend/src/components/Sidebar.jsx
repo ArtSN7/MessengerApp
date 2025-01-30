@@ -11,6 +11,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
     <ProfileHeader />
+    <div class="divider"></div>
     </div>
   );
 };

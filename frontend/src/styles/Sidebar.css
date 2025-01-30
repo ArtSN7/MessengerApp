@@ -1,11 +1,17 @@
 .sidebar {
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adjusted shadow */
   border: #0b1320;
   text-align: left;
   background: #0b1320;
   color: white;
   padding: 40px;
   width: fit-content;
-  height: 100%;
+  
+}
+
+.divider {
+  width: 100%;
+  height: 2px;
+  background-color: #ccc;
 }
