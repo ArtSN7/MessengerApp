@@ -21,7 +21,7 @@ const Error = () => {
 
   return (
     <div style={errorStyle}>
-      {error}
+      {error ? <p>{error.message}</p> : <p>No error message available.</p>}
     </div>
   );
 };
