@@ -4,8 +4,9 @@ import Sidebar from './Sidebar';
 import ChatWindow from './ChatWindow';
 import { AppContext } from '../context/AppContext';
 import "../styles/Main.css";
+import axios from 'axios';
 
-const Main = () => {
+const Main = async () => {
     const { username } = useParams(); // Extract username from URL parameters
     const { setUsername, messages, setMessages } = useContext(AppContext);
 
@@ -14,21 +15,30 @@ const Main = () => {
 
         const fetchMessages = async () => {
             try {
-                const response = await fetch(`/main/${username}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
-                const data = await response.json();
-                setMessages(data);
+
+                const response = await axios.post(`http://localhost:5001/main/${username}`);
+                setMessages(response.data);
+
             } catch (error) {
-                console.error('Error fetching messages:', error);
+
+                const statusCode = error.response.status;
+                const errorMessage = error.response.data.message; // Adjust based on your API response
+
+                // Call the error check function
+                const isErrorMessage = error_check(statusCode, errorMessage);
+
+                if (isErrorMessage) {
+                    navigate('/error');
+                } else {
+                    setError(error.response.data.error);
+                }
             }
         };
 
-        fetchMessages();
-    }, [username, setUsername, setMessages]);
+        fetchMessages(); // call the function to fetch messages
+
+    }, [username, setUsername, setMessages, navigate]);
+
 
     return (
         <div className="main-container">
