@@ -5,11 +5,10 @@ import ChatWindow from './ChatWindow';
 import { AppContext } from '../context/AppContext';
 import "../styles/Main.css";
 import axios from 'axios';
-import error_check from '../data/error_check';
 
 const Main = () => {
     const { username } = useParams(); // Extract username from URL parameters
-    const { setUsername, messages, setMessages } = useContext(AppContext);
+    const { setUsername, messages, setMessages, setError } = useContext(AppContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -23,17 +22,18 @@ const Main = () => {
 
             } catch (error) {
 
-                    navigate('/error');
+                SetError(error);
+                navigate('/error');
 
             }
         };
 
         fetchMessages(); // call the function to fetch messages
-    }, [username, setUsername, setMessages, navigate]);
+    }, [username, setUsername, setMessages, setError navigate]);
 
     return (
         <div className="main-container">
-            <Sidebar className="sidebar" />
+            <Sidebar username={username} className="sidebar" />
             <ChatWindow messages={messages} className="chat-window" />
         </div>
     );

@@ -15,7 +15,7 @@ const Login = () => {
     // navigation to redirect to another page
     const navigate = useNavigate();
 
-    const { setUsername: setGlobalUsername } = useContext(AppContext);
+    const { setUsername: setGlobalUsername, setError: setGlobalError } = useContext(AppContext);
 
     // function to handle login after submitting the form
     const handleSubmit = async (e) => {
@@ -38,7 +38,8 @@ const Login = () => {
             const isErrorMessage = error_check(statusCode, errorMessage);
 
             if (isErrorMessage) {
-                navigate('/error');
+              setGlobalError(errorMessage);
+              navigate('/error');
             }
             else{
               setError( error.response.data.error );

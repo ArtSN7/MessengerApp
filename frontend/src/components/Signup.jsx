@@ -16,7 +16,7 @@ const Signup = () => {
     const [profile_picture, setProfilePicture] = useState('');
     const [error, setError] = useState('');
     const timeoutRef = useRef(null);
-    const { setUsername: setGlobalUsername } = useContext(AppContext);
+    const { setUsername: setGlobalUsername, setError: SetGLobalError } = useContext(AppContext);
 
     // navigation to redirect to another page
     const navigate = useNavigate();
@@ -41,6 +41,7 @@ const Signup = () => {
             const isErrorMessage = error_check(statusCode, errorMessage);
 
             if (isErrorMessage) {
+                SetGLobalError(errorMessage);
                 navigate('/error');
             }
             else{

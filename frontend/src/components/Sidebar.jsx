@@ -7,10 +7,10 @@ import ProfileHeader from "./ProfileHeader";
 
 // { conversations, onSelectConversation }
 
-const Sidebar = () => {
+const Sidebar = ({username}) => {
   return (
     <div className="sidebar">
-    <ProfileHeader />
+    <ProfileHeader username={username} />
     <div className="divider"></div>
     </div>
   );

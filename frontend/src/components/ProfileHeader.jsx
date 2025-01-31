@@ -2,7 +2,7 @@ import React from "react";
 import { FaUser, FaCog } from "react-icons/fa";
 import "../styles/ProfileHeader.css"; 
 
-const ProfileHeader = () => {
+const ProfileHeader = ({username}) => {
   return (
     <div className="profile-header">
       {/* Left Section */}
@@ -10,7 +10,7 @@ const ProfileHeader = () => {
         <div className="profile-picture"></div>
 
         <div className="text-section">
-          <p className="name">Billy S.</p>
+          <p className="name">{username}</p>
         </div>
       </div>
 

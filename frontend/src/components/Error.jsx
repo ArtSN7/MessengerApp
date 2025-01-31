@@ -1,15 +1,29 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import error_check from '../data/error_check';
+import React from 'react';
+import {AppContext} from '../context/AppContext';
 
-const Error = ({ error }) => {
-    return (
-        <div>
-            <h1>Error:</h1>
-            <p>{error}</p>
-        </div>
-    );
+const Error = () => {
+  const errorStyle = {
+    backgroundColor: '#ffebee', // Light red background
+    color: '#c62828', // Dark red text
+    padding: '10px',
+    borderRadius: '5px',
+    border: '1px solid #ef9a9a', // Light red border
+    margin: '10px 0',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontFamily: 'Arial, sans-serif',
+    fontSize: '14px',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+  };
+
+    const {error} = React.useContext(AppContext);
+
+  return (
+    <div style={errorStyle}>
+      {error}
+    </div>
+  );
 };
 
 export default Error;
