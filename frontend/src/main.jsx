@@ -5,19 +5,23 @@ import Login from './components/Login.jsx';
 import Error from './components/Error.jsx';
 import Signup from './components/Signup.jsx';
 import Main from './components/Main.jsx';
+import { AppProvider } from './context/AppContext';
 
 const Root = () => {
 
     return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/main" element={<Main />} />
-                <Route path="*" element={<Error/>} />
-            </Routes>
-        </Router>
+        <AppProvider>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<Login />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/main/:username" element={<Main />} />
+                    <Route path="*" element={<Error/>} />
+                </Routes>
+            </Router>
+        </AppProvider>
+
     );
 };
 

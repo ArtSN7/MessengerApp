@@ -15,6 +15,7 @@ const Signup = () => {
     const [profile_picture, setProfilePicture] = useState('');
     const [error, setError] = useState('');
     const timeoutRef = useRef(null);
+    const { setUsername: setGlobalUsername } = useContext(AppContext);
 
     // navigation to redirect to another page
     const navigate = useNavigate();
@@ -27,7 +28,8 @@ const Signup = () => {
             const response = await axios.post(`http://localhost:5001/signup`, { username, password, password_confirm, first_name, last_name, profile_picture });
 
             localStorage.setItem('token', response.data.token);
-            navigate('/main');
+            setGlobalUsername(username);
+            navigate(`/main/${username}`);
 
         } catch (error) {
             // Check the status code
@@ -61,7 +63,7 @@ const Signup = () => {
         <form className='signup-form' onSubmit={handleSubmit}>
           <input id='signup_username' type="text" placeholder="Username" className="input-field-signup" onChange={(e) => setUsername(e.target.value)} required />
           <input id='signup_password' type="password" placeholder="Password" className="input-field-signup" onChange={(e) => setPassword(e.target.value)} required />
-          <input id='signup_password_confirm' type="password" placeholder="Confirm Password" className="input-field-signup" onChange={(e) => setPassword(e.target.value)} required />
+          <input id='signup_password_confirm' type="password" placeholder="Confirm Password" className="input-field-signup" onChange={(e) => setPasswordConfirm(e.target.value)} required />
           <input id='signup_first_name' type="text" placeholder="First Name" className="input-field-signup" onChange={(e) => setFirstName(e.target.value)} required />
           <input id='signup_last_name' type="text" placeholder="Last Name" className="input-field-signup" onChange={(e) => setLastName(e.target.value)} required />
           <input id='signup_profile_picture' type="text" placeholder="Profile Picture" className="input-field-signup" onChange={(e) => setProfilePicture(e.target.value)} required />

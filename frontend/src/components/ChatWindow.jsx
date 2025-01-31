@@ -1,13 +1,16 @@
 import React from "react";
 import "../styles/ChatWindow.css";
 
-const ChatWindow = () => {
+const ChatWindow = ({ messages  }) => {
   return (
     <div className="chat-window">
       <div className="chat-messages">
-        <p>Message 1</p>
-        <p>Message 2</p>
-        <p>Message 3</p>
+        {messages.map((message, index) => (
+          <div key={index} className="chat-message">
+            <div className="chat-message-content">{message.content}</div>
+            <div className="chat-message-time">{message.time}</div>
+          </div>
+        ))}
       </div>
       <input type="text" placeholder="Type a message..." />
       <button>Send</button>

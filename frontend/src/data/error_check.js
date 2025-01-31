@@ -1,7 +1,7 @@
 export default function error_check(statusCode, errorMessage) {
 
     if (statusCode === 401) { // redirect to the error page
-        return false;
+        return true;
     }
 
     if (statusCode === 400) { // 400 means that i need to show the error message

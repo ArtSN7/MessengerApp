@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "../styles/Login.css" 
 import error_check from '../data/error_check';
+import { AppContext } from '../context/AppContext';
 
 const Login = () => {
 
@@ -14,6 +15,8 @@ const Login = () => {
     // navigation to redirect to another page
     const navigate = useNavigate();
 
+    const { setUsername: setGlobalUsername } = useContext(AppContext);
+
     // function to handle login after submitting the form
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,7 +25,9 @@ const Login = () => {
             const response = await axios.post(`http://localhost:5001/login`, { username, password });
 
             localStorage.setItem('token', response.data.token);
-            navigate('/main');
+            
+            setGlobalUsername(username);
+            navigate(`/main/${username}`);
 
         } catch (error) {
 
