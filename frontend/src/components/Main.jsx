@@ -1,14 +1,16 @@
 import React, { useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import ChatWindow from './ChatWindow';
 import { AppContext } from '../context/AppContext';
 import "../styles/Main.css";
 import axios from 'axios';
+import error_check from '../data/error_check';
 
-const Main = async () => {
+const Main = () => {
     const { username } = useParams(); // Extract username from URL parameters
     const { setUsername, messages, setMessages } = useContext(AppContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setUsername(username); // Set the username in context
@@ -21,24 +23,13 @@ const Main = async () => {
 
             } catch (error) {
 
-                const statusCode = error.response.status;
-                const errorMessage = error.response.data.message; // Adjust based on your API response
-
-                // Call the error check function
-                const isErrorMessage = error_check(statusCode, errorMessage);
-
-                if (isErrorMessage) {
                     navigate('/error');
-                } else {
-                    setError(error.response.data.error);
-                }
+
             }
         };
 
         fetchMessages(); // call the function to fetch messages
-
     }, [username, setUsername, setMessages, navigate]);
-
 
     return (
         <div className="main-container">
