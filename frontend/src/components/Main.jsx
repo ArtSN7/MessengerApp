@@ -29,7 +29,7 @@ const Main = () => {
         };
 
         fetchMessages(); // call the function to fetch messages
-    }, [username, setUsername, setMessages, setError navigate]);
+    }, [username, setUsername, setMessages, setError, navigate]);
 
     return (
         <div className="main-container">
