@@ -1,5 +1,6 @@
 import React from 'react';
 import {AppContext} from '../context/AppContext';
+import ErrorIcon from '../assets/error_icon';
 
 const Error = () => {
   const errorStyle = {
@@ -17,12 +18,25 @@ const Error = () => {
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   };
 
-    const {error} = React.useContext(AppContext);
+  const errorContainerStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  };
+
+  const {error} = React.useContext(AppContext);
 
   return (
-    <div style={errorStyle}>
-      {error ? <p>{error.message}</p> : <p>No error message available.</p>}
+    <div style={errorContainerStyle} className="error-container">
+      <div style={errorStyle}>
+        {error ? <p>{error.message}</p> : <p>No error message available.</p>}
+      </div>
+      <div className="error-icon">
+        <ErrorIcon />
+      </div>
     </div>
+    
   );
 };
 
