@@ -13,7 +13,8 @@ const Signup = () => {
     const [password_confirm, setPasswordConfirm] = useState('');
     const [first_name, setFirstName] = useState('');
     const [last_name, setLastName] = useState('');
-    const [profile_picture, setProfilePicture] = useState('');
+    const [profile_picture, setProfilePicture] = useState('https://picsum.photos/200');
+    
     const [error, setError] = useState('');
     const timeoutRef = useRef(null);
     const { setUsername: setGlobalUsername, setError: SetGLobalError } = useContext(AppContext);
@@ -68,7 +69,6 @@ const Signup = () => {
           <input id='signup_password_confirm' type="password" placeholder="Confirm Password" className="input-field-signup" onChange={(e) => setPasswordConfirm(e.target.value)} required />
           <input id='signup_first_name' type="text" placeholder="First Name" className="input-field-signup" onChange={(e) => setFirstName(e.target.value)} required />
           <input id='signup_last_name' type="text" placeholder="Last Name" className="input-field-signup" onChange={(e) => setLastName(e.target.value)} required />
-          <input id='signup_profile_picture' type="text" placeholder="Profile Picture" className="input-field-signup" onChange={(e) => setProfilePicture(e.target.value)} required />
 
           <button type="submit" className="signup-button" onClick={handleSubmit}>Sign up</button>
         </form>

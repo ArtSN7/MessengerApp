@@ -23,11 +23,11 @@
   margin-top: 50px;
 }
 
-input[type="text"] {
+.chat-input {
   width: calc(100% - 40px);
   padding: 10px;
 }
 
-button {
+.chat-button {
   padding: 10px 20px;
 }

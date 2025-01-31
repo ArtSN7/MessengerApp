@@ -12,8 +12,8 @@ const ChatWindow = ({ messages  }) => {
           </div>
         ))}
       </div>
-      <input type="text" placeholder="Type a message..." />
-      <button>Send</button>
+      <input className="chat-input" type="text" placeholder="Type a message..." />
+      <button className="chat-button">Send</button>
     </div>
   );
 };

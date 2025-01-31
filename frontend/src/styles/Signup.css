@@ -28,8 +28,7 @@
     flex-direction: column;
 }
   
-.input-field-signup{
-    width: 100%;
+.input-field-signup {
     padding: 12px;
     margin-bottom: 12px;
     border-radius: 6px;
@@ -39,25 +38,24 @@
     outline: none;
     font-size: 16px;
 }
-  
+
 .input-field-signup:focus {
     border: 2px solid #3b82f6;
 }
-  
+
 .signup-button {
-    width: 100%;
+    width: 100%; /* Ensures uniform width */
     padding: 12px;
     border-radius: 6px;
-    background-color: #3b82f6;
+    background-color: #3b82f6; /* Button color */
     color: white;
-    font-weight: 600;
     border: none;
     cursor: pointer;
-    transition: background 0.3s;
+    font-size: 16px;
 }
-  
+
 .signup-button:hover {
-    background-color: #2563eb;
+    background-color: #2563eb; /* Darker shade on hover */
 }
   
 .signup-text {
