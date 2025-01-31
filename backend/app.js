@@ -13,7 +13,7 @@ app.use(express.json());
 // Routes
 app.use(express.urlencoded({ extended: true })); // This should be before your routes
 app.use('/', authRoutes); // root for login and signup
-app.use('/main', mainRoutes); // root for main page
+app.use('/main/*', mainRoutes); // root for main page
 
 
 // Sync database and start server

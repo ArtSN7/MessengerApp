@@ -28,3 +28,5 @@ router.post('/main/:username', async (req, res) => {
     }
     
 });
+
+module.exports = router;

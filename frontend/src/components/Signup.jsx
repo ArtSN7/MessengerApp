@@ -1,8 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "../styles/Signup.css" 
 import error_check from '../data/error_check';
+import { AppContext } from '../context/AppContext';
 
 const Signup = () => {
 
