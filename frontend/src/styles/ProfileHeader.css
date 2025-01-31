@@ -1,24 +1,33 @@
 .profile-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #0b1320;
-    padding: 16px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 320px;
-    color: white;
-  }
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: flex-start; /* Align items to the left */
+  background-color: #0b1320;
+  padding: 16px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 320px;
+  color: white;
+}
+
   
   .profile-info {
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: left;
+    gap: 16px;
+  }
+
+  .avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
   }
   
   .profile-picture {
-    width: 48px;
-    height: 48px;
+    width: 50px;
+    height: 50px;
     background-color: #d1d5db; /* Light gray placeholder */
     border-radius: 50%;
   }
@@ -28,14 +37,11 @@
     flex-direction: column;
   }
   
-  .greeting {
-    color: #9ca3af; /* Gray text */
-    font-size: 14px;
-  }
   
   .name {
     font-size: 18px;
     font-weight: bold;
+    font-family: 'Arial', sans-serif;
   }
   
   .icons {
@@ -44,5 +50,10 @@
     gap: 16px;
     font-size: 18px;
     color: #9ca3af; /* Light gray for icons */
+    padding: 8px;
   }
   
+  .icons svg {
+      width: 15px;
+      height: 15px;
+  }
