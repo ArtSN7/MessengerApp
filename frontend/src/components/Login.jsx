@@ -22,37 +22,38 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(`http://localhost:5001/login`, { username, password });
-
-            localStorage.setItem('token', response.data.token);
-            
-            setGlobalUsername(username);
-            navigate(`/main/${username}`);
-
+          const response = await axios.post(`http://localhost:5001/login`, { username, password });
+  
+          localStorage.setItem('token', response.data.token);
+          setGlobalUsername(username);
+          navigate(`/main/${username}`);
+  
         } catch (error) {
-
-            const statusCode = error.response.status;
-            const errorMessage = error.response.data.message; // Adjust based on your API response
-
-            // Call the error check function
-            const isErrorMessage = error_check(statusCode, errorMessage);
-
-            if (isErrorMessage) {
-              setGlobalError(errorMessage);
-              navigate('/error');
-            }
-            else{
-              setError( error.response.data.error );
-
-              const element = document.getElementById("error_text");
-              element.style.display = 'block';
-
-              setTimeout(() => {
-                element.style.display = 'none';
-                setError('');
-              }, 1500);
-            }
-        }
+          if (error.response) {
+              const statusCode = error.response.status;
+              const errorMessage = error.response.data.error || "An error occurred";
+              
+              const isErrorMessage = error_check(statusCode, errorMessage);
+  
+              if (isErrorMessage) {
+                  setGlobalError(errorMessage);
+                  navigate('/error');
+              } else {
+                  setError(errorMessage);
+                  const element = document.getElementById("error_text");
+                  if (element) {
+                      element.style.display = 'block';
+                      setTimeout(() => {
+                          element.style.display = 'none';
+                          setError('');
+                      }, 1500);
+                  }
+              }
+          } else {
+              console.error("Login request failed:", error);
+              setError("Network error or server unavailable.");
+          }
+      }
     };
 
     return (
@@ -65,7 +66,7 @@ const Login = () => {
           <button type="submit" className="login-button" onClick={handleSubmit}>Log in</button>
         </form>
         <p className="signup-text" onClick={() => navigate('/signup')}>Sign up</p>
-        {error && <div id='error_text' className="error_text">{error}</div>}
+        {<div id='error_text' className="error_text">{error}</div>}
       </div>
     </div>
     );

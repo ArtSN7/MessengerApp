@@ -1,6 +1,7 @@
 import React from 'react';
 import {AppContext} from '../context/AppContext';
 import ErrorIcon from '../assets/error_icon';
+import {useContext} from 'react';
 
 const Error = () => {
   const errorStyle = {
@@ -25,7 +26,7 @@ const Error = () => {
     justifyContent: 'center',
   };
 
-  const {error} = React.useContext(AppContext);
+  const {error} = useContext(AppContext);
 
   return (
     <div style={errorContainerStyle} className="error-container">

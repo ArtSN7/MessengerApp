@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/Users');
 
 const router = express.Router();
-const JWT_SECRET = process.env.JWT_KEY;
+const JWT_SECRET = "3778f471b881b6f82abf6d5143e18a0e2716cf5120aef19b31a40401434438e535a9c36d2309e9dc143401ec04cff978f53c83a9ae53221a6180b07e3cde188d";
 
 // using POST method as it is more secure comparing to GET
 
@@ -53,6 +53,12 @@ router.post('/login', async (req, res) => {
             return res.status(401).json({ error: 'Check your password' }); // if passwords don't match, error is returned
         }
         // otherwise, the user is logged in
+
+        if (!JWT_SECRET) {
+            console.error("JWT secret key is missing!");
+            return res.status(500).json({ error: "Internal server error" });
+        }
+        
         const token = jwt.sign({ userId: user.id }, JWT_SECRET);
         res.json({ token });
 

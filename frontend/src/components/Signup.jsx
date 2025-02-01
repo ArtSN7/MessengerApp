@@ -34,6 +34,7 @@ const Signup = () => {
             navigate(`/main/${username}`);
 
         } catch (error) {
+
             // Check the status code
             const statusCode = error.response.status;
             const errorMessage = error.response.data.message; // Adjust based on your API response

@@ -2,16 +2,21 @@
 import React from "react";
 import "../styles/Sidebar.css";
 import ProfileHeader from "./ProfileHeader";
+import MessagesSidebar from "./MessagesSidebar";
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
 
+const Sidebar = () => {
+  const { username, messages } = useContext(AppContext);
+  
+  console.log(username);
+  console.log(messages);
 
-
-// { conversations, onSelectConversation }
-
-const Sidebar = ({username}) => {
   return (
     <div className="sidebar">
-    <ProfileHeader username={username} />
-    <div className="divider"></div>
+      <ProfileHeader username={username} />
+      <div className="divider"></div>
+      <MessagesSidebar messages={messages} />
     </div>
   );
 };

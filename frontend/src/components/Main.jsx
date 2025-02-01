@@ -6,9 +6,10 @@ import { AppContext } from '../context/AppContext';
 import "../styles/Main.css";
 import axios from 'axios';
 
+
 const Main = () => {
     const { username } = useParams(); // Extract username from URL parameters
-    const { setUsername, messages, setMessages, setError } = useContext(AppContext);
+    const { setUsername, messages, setMessages, error, setError } = useContext(AppContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -17,12 +18,16 @@ const Main = () => {
         const fetchMessages = async () => {
             try {
 
-                const response = await axios.post(`http://localhost:5001/main/${username}`);
+                console.log("TEST 7")
+                const response = await axios.post(`http://localhost:5001/main/${username}`); // ISSUE HERE
+
+                console.log("TEST 8")
                 setMessages(response.data);
 
             } catch (error) {
 
-                SetError(error);
+                setError(error);
+                console.log(error);
                 navigate('/error');
 
             }
