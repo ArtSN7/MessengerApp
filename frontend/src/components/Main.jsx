@@ -36,12 +36,16 @@ const Main = () => {
         fetchMessages(); // call the function to fetch messages
     }, [username, setUsername, setMessages, setError, navigate]);
 
-    return (
+    return(
+        <p>MAIN</p>
+    )
+
+    /*/ return (
         <div className="main-container">
             <Sidebar username={username} className="sidebar" />
             <ChatWindow messages={messages} className="chat-window" />
         </div>
-    );
+    ); */
 };
 
 export default Main;

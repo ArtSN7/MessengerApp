@@ -9,7 +9,7 @@ const router = express.Router();
 
 
 
-router.get('/main/Artem123', async (req, res) => {
+router.get('/main/:username', async (req, res) => {
 
     console.log("TEST 1")
 
